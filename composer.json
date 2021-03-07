@@ -1,0 +1,27 @@
+{
+    "name": "teacoders/module-generator",
+    "description": "Module Generator",
+    "type": "library",
+    "keywords": ["module-generator", "teacoders","laravel","laravel module generator","technicalms"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moolchand Sharma",
+            "email": "technical-ms@teacoders.in"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "TeaCoders\\ModuleGenerator\\": "src/"
+        }
+    },
+     "extra": {
+        "laravel": {
+            "providers": [
+                "TeaCoders\\ModuleGenerator\\ModuleServiceProvider"
+            ]
+        }
+    }
+}

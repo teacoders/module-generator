@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Teacoder;
+
+class TeacoderController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('teacoder.index',[
+            'teacoders' => Teacoder::all()
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('teacoder.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store()
+    {
+        request()->validate([
+            //
+        ]);
+        Teacoder::create([
+            //
+        ]);
+        return redirect('teacoders')->with('message','Record created successfully');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Teacoder  $teacoder
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Teacoder $teacoder)
+    {
+        return view('teacoder.show',compact('teacoder'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Teacoder  $teacoder
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Teacoder $teacoder)
+    {
+        return view('teacoder.edit',compact('teacoder'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Teacoder  $teacoder
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Teacoder $teacoder)
+    {
+        request()->validate([
+            //
+        ]);
+        $teacoder->update([
+            //
+        ]);
+        return redirect('teacoders')->with('message','Record updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Teacoder  $teacoder
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Teacoder $teacoder)
+    {
+        $teacoder->delete();
+        return redirect('teacoders')->with('message','Record deleted successfully');
+    }
+}
