@@ -21,6 +21,7 @@ class DeleteView extends Command
      */
     protected $description = 'this command will delete view';
     protected $file;
+    
     /**
      * Create a new command instance.
      *
