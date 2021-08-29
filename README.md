@@ -1,7 +1,13 @@
+<p align="center"><a href="https://teacoders.in" target="_blank"><img src="https://teacoders.in/images/basic_logo.png" width="400"></a></p>
+
 # Module Generator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/teacoders/module-generator.svg?style=flat-square)](https://packagist.org/packages/teacoders/module-generator)
 [![Total Downloads](https://img.shields.io/packagist/dt/teacoders/module-generator.svg?style=flat-square)](https://packagist.org/packages/teacoders/module-generator)
+
+## About Teacoders
+
+Tea Coders is an IT consulting and software product development company that designs, develops and deploys solutions based on AI and Machine Learning. These are accessible through web, mobile, and embedded software products for clients across the World. Our customers include start-ups as well as some of the renowned companies. Focused on Artificial Intelligence-driven IoT, we create solutions that address the pressing challenges of the customers
 
 ## Installation
 
