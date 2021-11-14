@@ -2,7 +2,7 @@
 
 namespace App\Http\Traits;
 
-trait TeacodersTrait
+trait Teacoders
 {
     //
 }

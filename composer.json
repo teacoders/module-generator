@@ -1,27 +1,35 @@
 {
-    "name": "teacoders/module-generator",
-    "description": "Module Generator",
-    "type": "library",
-    "keywords": ["module-generator", "teacoders","laravel","laravel module generator","technicalms"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Moolchand Sharma",
-            "email": "technical-ms@teacoders.in"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "TeaCoders\\ModuleGenerator\\": "src/"
-        }
-    },
-     "extra": {
-        "laravel": {
-            "providers": [
-                "TeaCoders\\ModuleGenerator\\ModuleServiceProvider"
-            ]
-        }
+  "name": "teacoders/module-generator",
+  "description": "This package will generate your module very quickly and it will save your time",
+  "type": "library",
+  "keywords": [
+    "module-generator",
+    "teacoders",
+    "laravel",
+    "laravel module generator",
+    "technicalms"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Moolchand Sharma",
+      "email": "technical-ms@teacoders.in"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "laravel/framework": "~6.0|~7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TeaCoders\\ModuleGenerator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "TeaCoders\\ModuleGenerator\\ModuleServiceProvider"
+      ]
+    }
+  }
 }

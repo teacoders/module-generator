@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Teacoder;
+use App\Http\Requests\TeacoderRequest;
 
 class TeacoderController extends Controller
 {
@@ -31,11 +32,12 @@ class TeacoderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \App\Http\Requests\TeacoderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(TeacoderRequest $request)
     {
-        Teacoder::create($this->validator());
+        Teacoder::create($request->validated());
         return redirect(route('teacodersroute'))->with('message','Record created successfully');
     }
 
@@ -47,13 +49,13 @@ class TeacoderController extends Controller
      */
     public function show(Teacoder $teacoder)
     {
-        return view('teacodersview',compact('teacoderVariable'));
+        return view('teacodersview.show',compact('teacoderVariable'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Teacoder  $teacoders
+     * @param  \App\Teacoder  $teacoder
      * @return \Illuminate\Http\Response
      */
     public function edit(Teacoder $teacoder)
@@ -64,12 +66,13 @@ class TeacoderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Teacoder  $teacoders
+     * @param  \App\Http\Requests\TeacoderRequest  $request
+     * @param  \App\Teacoder  $teacoder
      * @return \Illuminate\Http\Response
      */
-    public function update(Teacoder $teacoder)
+    public function update(TeacoderRequest $request, Teacoder $teacoder)
     {
-        $teacoder->update($this->validator());
+        $teacoder->update($request->validated());
         return redirect(route('teacodersroute'))->with('message','Record updated successfully');
     }
 
@@ -83,11 +86,5 @@ class TeacoderController extends Controller
     {
         $teacoder->delete();
         return back()->with('message','Record deleted successfully');
-    }
-    public function validator()
-    {
-        return request()->validate([
-            //validations
-        ]);
     }
 }

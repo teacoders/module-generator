@@ -9,36 +9,40 @@ use Illuminate\Support\Str;
  */
 trait ModuleGeneratorTrait
 {
-    protected function getStub(string $type)
+    public function getStub(string $type)
     {
         return __DIR__ . '/../stubs/' . $type . '.stub';
     }
-    protected function getPluralName($name)
+    public function getPluralName($name)
     {
         return Str::plural(strtolower($name), 2);
     }
-    protected function getControllerPath()
-    {
-        return app_path('Http/Controllers/' . $this->name . 'Controller.php');
-    }
-    protected function getControllerNamespace()
+    public function controllerPath()
     {
         return app_path('Http/Controllers/');
     }
-    protected function getViewPath()
+    public function viewPath()
     {
-        return resource_path('views/' . $this->viewDirectoryName . '/');
+        return resource_path('views/');
     }
-    protected function replaceContent($search, $replace, $content)
+    public function replaceContent($search, $replace, $content)
     {
         return str_replace($search, $replace, $content);
     }
-    protected function routePath()
+    public function routePath()
     {
         return base_path('routes/web.php');
     }
-    protected function traitPath()
+    public function traitPath()
     {
-        return app_path('Http/Traits/');
+        return config('modulegenerator.trait_path');
+    }
+    public function modelPath()
+    {
+        return app_path() . '/';
+    }
+    public function requestPath()
+    {
+        return app_path('Http/Requests/');
     }
 }

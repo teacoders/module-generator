@@ -4,24 +4,27 @@ namespace TeaCoders\ModuleGenerator\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use TeaCoders\ModuleGenerator\Console\Commands\Traits\ModuleGeneratorTrait;
 
 class DeleteView extends Command
 {
+    use ModuleGeneratorTrait;
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'delete:view {name : folder name} {--file= :Remove specific file}';
-    
+    protected $signature = 'delete:view {name : Directory name} {--file= : Remove specific files}';
+
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'this command will delete view';
+    protected $description = 'this command will delete the view directory or specific view file';
+
     protected $file;
-    
+
     /**
      * Create a new command instance.
      *
@@ -39,20 +42,30 @@ class DeleteView extends Command
      */
     public function handle()
     {
-        $path = resource_path('views/' . $this->argument('name'));
+        $path = $this->viewPath() . $this->argument('name');
+
         $this->file = $this->option('file');
-        if (file_exists($path)) {
-            if (!$this->file) {
+
+        if (is_dir($path)) :
+            if (!$this->file) :
                 File::deleteDirectory($path);
-                $this->info("{$this->argument('name')} directory deleted successfully 👍");
-            } elseif (file_exists($path . '/' . $this->file . '.blade.php')) {
-                File::delete($path . '/' . $this->file . '.blade.php');
-                $this->info("{$this->file} file deleted successfully 👍");
-            } else {
-                $this->error("{$this->file} file not exist");
-            }
-        } else {
-            $this->error("{$this->argument('name')} directory not exist");
-        }
+                $this->info("view directory deleted successfully");
+            else :
+                $this->deleteViewFile($path);
+            endif;
+        else :
+            $this->error("{$this->argument('name')} directory does not exist");
+        endif;
+    }
+    protected function deleteViewFile($path)
+    {
+        $file = $path . '/' . $this->file . '.blade.php';
+
+        if (file_exists($file)) :
+            File::delete($file);
+            $this->info("{$this->file} view file deleted successfully");
+        else :
+            $this->error("{$this->file} view file does not exist");
+        endif;
     }
 }

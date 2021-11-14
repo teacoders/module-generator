@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use TeaCoders\ModuleGenerator\Console\Commands\Traits\ModuleGeneratorTrait;
 
-class GenerateTrait extends Command
+class MakeTrait extends Command
 {
     use ModuleGeneratorTrait;
     /**
@@ -14,22 +14,20 @@ class GenerateTrait extends Command
      *
      * @var string
      */
-    protected $signature = 'make:trait {name? : Trait name}';
+    protected $signature = 'make:trait {name* : The name of the classes}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'This command will generate trait';
+    protected $description = 'Create new trait classes';
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    protected $name;
-    protected $file;
 
     public function __construct()
     {
@@ -43,18 +41,16 @@ class GenerateTrait extends Command
      */
     public function handle()
     {
-        $this->name = $this->argument('name');
-        if (!$this->name)
-            $this->name = $this->ask('Enter Trait Name');
-        $this->name = ucfirst($this->name);
         if (!is_dir($this->traitPath()))
             mkdir($this->traitPath(), 0777, true);
-        $this->file = $this->traitPath() . $this->name . 'Trait.php';
-        if (!file_exists($this->file)) {
-            File::put($this->file, $this->replaceContent('Teacoders', $this->name, file_get_contents($this->getStub('trait'))));
-            $this->info("{$this->name} Trait created successfully 👍");
-        } else {
-            $this->error("{$this->name} Trait already exist");
+        foreach ($this->argument('name') as $name) {
+            $file = $this->traitPath() . $name . '.php';
+            if (!file_exists($file)) :
+                File::put($file, $this->replaceContent('Teacoders', $name, file_get_contents($this->getStub('trait'))));
+                $this->info("{$name} created successfully");
+            else :
+                $this->error("{$name} already exist");
+            endif;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Teacoders extends Model
+class Teacoder extends Model
 {                
     protected $guarded = [];
 }

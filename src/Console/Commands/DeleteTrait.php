@@ -4,24 +4,25 @@ namespace TeaCoders\ModuleGenerator\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use TeaCoders\ModuleGenerator\Console\Commands\Traits\ModuleGeneratorTrait;
 
 class DeleteTrait extends Command
 {
+    use ModuleGeneratorTrait;
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'delete:trait {name? : Trait name}';
+    protected $signature = 'delete:trait {name* : The name of the classes}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'This command will delete trait';
+    protected $description = 'Delete multiple trait classes';
 
-    protected $name;
     /**
      * Create a new command instance.
      *
@@ -39,18 +40,23 @@ class DeleteTrait extends Command
      */
     public function handle()
     {
-        $this->name = $this->argument('name');
-        if (!$this->name)
-            $this->name = $this->ask('Enter Trait Name');
-        $this->name = ucfirst($this->name);
-        $file = $this->traitPath() . $this->name . 'Trait.php';
-        if (!is_dir($this->traitPath())) {
+        if (!is_dir($this->traitPath())) :
+
             $this->error("Traits directory not found");
-        } elseif (file_exists($file)) {
-            File::delete($file);
-            $this->info("{$this->name} Trait deleted successfully 👍");
-        } else {
-            $this->error("{$this->name} Trait not found");
-        }
+        else :
+            foreach ($this->argument('name') as $name) {
+
+                $file = $this->traitPath() . $name . '.php';
+
+                if (file_exists($file)) :
+
+                    File::delete($file);
+
+                    $this->info("{$name} trait deleted successfully");
+                else :
+                    $this->error("{$name} trait does not exist");
+                endif;
+            }
+        endif;
     }
 }
