@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 /**
  * ModuleGeneratorTrait
  */
-
 trait ModuleGeneratorTrait
 {
     public function getStub(string $type)
