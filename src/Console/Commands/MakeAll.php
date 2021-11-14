@@ -156,15 +156,15 @@ class MakeAll extends Command
             mkdir($view, 0777, true);
         else
             $this->error("\nView directory already exist");
-        if (file_exists(config_path('modulegenerator.php'))) {
-            foreach (config('modulegenerator.files') as $file) {
+        if (file_exists(config_path('module-generator.php'))) {
+            foreach (config('module-generator.files') as $file) {
                 if (!file_exists($view . $file . '.blade' . self::FILE_EXTENSION))
                     File::put($view . $file . '.blade' . self::FILE_EXTENSION, file_get_contents($this->getStub('view')));
                 else
                     $this->error("\n" . $file . ' file already exist');
             }
         } else {
-            $this->error('Please publish modulegenerator config file');
+            $this->error('Please publish module generator config file');
         }
     }
     public function generateMigration()

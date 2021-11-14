@@ -54,11 +54,11 @@ class MakeView extends Command
 
             mkdir($this->path, 0777, true);
 
-            $this->info("{$this->argument('name')} directory created successfully");
+            $this->info("{$this->argument('name')} view directory created successfully");
 
         elseif (!$files) :
 
-            $this->error("{$this->argument('name')} directory already exist");
+            $this->error("{$this->argument('name')} view directory already exist");
 
         endif;
 
