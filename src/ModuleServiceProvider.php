@@ -3,11 +3,14 @@
 namespace TeaCoders\ModuleGenerator;
 
 use Illuminate\Support\ServiceProvider;
-use TeaCoders\ModuleGenerator\Console\Commands\DeleteView;
-use TeaCoders\ModuleGenerator\Console\Commands\DeleteTrait;
-use TeaCoders\ModuleGenerator\Console\Commands\MakeAll;
-use TeaCoders\ModuleGenerator\Console\Commands\MakeView;
-use TeaCoders\ModuleGenerator\Console\Commands\MakeTrait;
+use TeaCoders\ModuleGenerator\Console\Commands\{
+    MakeAll,
+    MakeView,
+    MakeTrait,
+    DeleteAll,
+    DeleteView,
+    DeleteTrait,
+};
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,7 @@ class ModuleServiceProvider extends ServiceProvider
                 MakeView::class,
                 MakeAll::class,
                 MakeTrait::class,
+                DeleteAll::class,
                 DeleteView::class,
                 DeleteTrait::class,
             ]);
