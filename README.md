@@ -7,7 +7,7 @@
 
 ## About Teacoders
 
-Tea Coders is an IT consulting and software product development company that designs, develops and deploys solutions based on AI and Machine Learning. These are accessible through web, mobile, and embedded software products for clients across the World. Our customers include start-ups as well as some of the renowned companies. Focused on Artificial Intelligence-driven IoT, we create solutions that address the pressing challenges of the customers
+We craft web applications & open source packages in the Laravel ecosystem.
 
 ## Installation
 
@@ -16,47 +16,69 @@ You can install the package via composer:
 ```bash
 composer require teacoders/module-generator
 ```
-Run the command below to publish the package config file config/modulegenerator.php
+Run the command below to publish the package config file config/module-generator.php
 
 ```bash
 php artisan vendor:publish //select publish module generator config file
 ```
-Run the command below to generate all(controller,model,migration,view,route)
+Run the command below to generate all the required files for the module(model, controller, migration, request, view, route)
 
 ```
-php artisan make:all <module name>
+php artisan make:all <module name> (Product or ServiceCategory)
 ```
+
+after that it will ask  "Do you want to add columns in migration ? (yes/no) [no]":
+
+if you enter yes/y then it will ask comma(,) seperated column names (name,avatar)
+
+if you hit enter then it will ask data types for these columns, press enter after selecting data types
+
+after that it will ask that "Do you want to create request class?" if you enter yes/y then it will create request class and validations for your migration columns, if you enter no/n then it will add validations in controller.
+
 Run the command below to generate view 
 
 ```
-php artisan make:view <directory name>
+php artisan make:view <view name>
 ```
-Run the command to generate specific view file inside the directory 
+Run the given command to generate specific view file inside the view directory 
 ```
-php artisan make:view <directory name> --file=filename
+php artisan make:view <view directory name> --file=filename
 ```
+Run the given command to delete whole module(model, controller, migration, request, view, route)
+
+```
+php artisan delete:all <module name> (Product)
+
+```
+
+Run the below command to delete specific file from module
+
+```
+php artisan delete:all <module name> -c|--controller, -m|--model, -r|--request, -t|--table, -b|--blade
+```
+
 Run the below command to delete view
 
 ```
-php artisan delete:view <directory name>
+php artisan delete:view <view name>
 ```
-Run the below command to delete specific view file inside the directory
+Run the below command to delete specific view file inside the view directory
 
 ```
-php artisan delete:view <directory name> --file=filename
+php artisan delete:view <view name> --file=filename
 ```
 Run the command below to generate trait
 
 ```
-php artisan make:trait <traitname>
+php artisan make:trait <trait1 trait2> // you can also create multiple traits
 ```
 Run the command below to delete trait
 
 ```
-php artisan delete:trait <traitname>
+php artisan delete:trait <trait1 trait2> // you can also delete multiple traits
 ```
 
-If you want to generate more view files then change in `config/modulegenerator.php`
+If you want to generate more view files then change in `config/module-generator.php`
 ```
 return [
     'files' => [
@@ -68,9 +90,6 @@ return [
     ]
 ];
 ```
-## Documentation
-
-You can find the documentation on the [TeaCoders website](https://teacoders.in).
 
 ### Security
 
