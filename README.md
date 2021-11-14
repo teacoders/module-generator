@@ -16,10 +16,10 @@ You can install the package via composer:
 ```bash
 composer require teacoders/module-generator
 ```
-Run the command below to publish the package config file config/module-generator.php
+Run the command below to publish the package config file
 
 ```bash
-php artisan vendor:publish //select publish module generator config file
+php artisan vendor:publish --provider="TeaCoders\ModuleGenerator\ModuleServiceProvider"
 ```
 Run the command below to generate all the required files for the module(model, controller, migration, request, view, route)
 
