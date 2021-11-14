@@ -48,7 +48,7 @@ class MakeView extends Command
     {
         $this->path = $this->viewPath() . $this->argument('name');
 
-        $files = $this->option('file') ?: config('modulegenerator.files');
+        $files = $this->option('file') ?: config('module-generator.files');
 
         if (!is_dir($this->path)) :
 
