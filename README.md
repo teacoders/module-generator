@@ -1,4 +1,4 @@
-<p align="center"><a href="https://teacoders.in" target="_blank"><img src="https://teacoders.in/images/logo.png" width="400"></a></p>
+<p align="center"><a href="https://teacoders.in" target="_blank"><img src="https://teacoders.in/images/logo.png" width="200"></a></p>
 
 # Module Generator
 
