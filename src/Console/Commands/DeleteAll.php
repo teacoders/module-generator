@@ -127,16 +127,16 @@ class DeleteAll extends Command
             $this->error("{$type} does not exist");
         }
    }
-   private function deleteRoute()
-   {
+    private function deleteRoute()
+    {
         $file = base_path('routes/web.php');
         $fileContent = file_get_contents($file);
         $fileArray = explode("\n", $fileContent);
         $routeName =  $this->getPluralName(Str::kebab($this->argument('name')));
-        $controllerName = Str::studly($this->argument('name')).'Controller';
-        $diffArray = array_diff($fileArray, ["Route::resource('{$routeName}', '{$controllerName}');"]);
+        $controllerName = Str::studly($this->argument('name')) . 'Controller';
+        $diffArray = array_diff($fileArray, ["Route::resource('{$routeName}', App\\Http\\Controllers\\{$controllerName}::class);"]);
         $content = implode("\n", $diffArray);
         file_put_contents($file, $content);
         $this->info("Route Removed Successfully");
-   }
+    }
 }

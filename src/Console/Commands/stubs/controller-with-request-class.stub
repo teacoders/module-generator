@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacoder;
+use App\Models\Teacoder;
 use App\Http\Requests\TeacoderRequest;
 
 class TeacoderController extends Controller

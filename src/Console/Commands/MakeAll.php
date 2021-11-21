@@ -144,7 +144,7 @@ class MakeAll extends Command
     {
         if (file_exists($this->controllerPath())) {
             $url = Str::kebab($this->getPluralName($this->viewDirectory));
-            File::append($this->routePath(), "\nRoute::resource('{$url}', '$this->controller');");
+            File::append($this->routePath(), "\nRoute::resource('{$url}', App\\Http\\Controllers\\$this->controller::class);");
         } else {
             $this->info("\nController not found");
         }

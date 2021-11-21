@@ -38,7 +38,7 @@ trait ModuleGeneratorTrait
     }
     public function modelPath()
     {
-        return app_path() . '/';
+        return app_path('Models/');
     }
     public function requestPath()
     {
