@@ -54,7 +54,7 @@ class DeleteTrait extends Command
 
                     $this->info("{$name} trait deleted successfully");
                 else :
-                    $this->error("{$name} trait does not exist");
+                    $this->error("{$name} does not exist");
                 endif;
             }
         endif;

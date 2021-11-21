@@ -95,7 +95,8 @@ class DeleteAll extends Command
     }
     protected function deleteMigration()
     {
-        $files = array_diff(scandir(database_path('migrations')),['.','..']);
+        $path = $this->getFilePath('table');
+        $files = array_diff(scandir($path),['.','..']);
         $table =  $this->getPluralName(Str::snake($this->argument('name')));
         $fileName = 'create_' . $table.'_table';
         foreach ($files as $value) {
@@ -103,13 +104,13 @@ class DeleteAll extends Command
                 if (Schema::hasTable($table)) {
                     try {
                         $this->call('migrate:rollback',[
-                            '--path' => "/database/migrations/{$value}"
+                            '--path' => $path.'/'.$value
                         ]);
                     } catch (\Throwable $th) {
                         //throw $th;
                     }
                 }
-                File::delete($this->getFilePath('table')."/{$value}");
+                File::delete($path . '/' . $value);
                 $this->info("Migration Deleted Successfully");
             }
         }
