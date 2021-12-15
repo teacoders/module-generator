@@ -14,7 +14,7 @@ We craft web applications & open source packages in the Laravel ecosystem.
 You can install latest version (only supports in laravel 8):
 
 ```bash
-composer require teacoders/module-generator
+composer require teacoders/module-generator:dev-main
 ```
 if you want to install it in laravel 6 or 7
 ```bash
