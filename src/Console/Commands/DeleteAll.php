@@ -19,7 +19,7 @@ class DeleteAll extends Command
      *
      * @var string
      */
-    protected $signature = 'delete:all {name : Module Name} {--c|controller : Delete a controller} {--m|model : Delete a model} {--r|request : Delete a request} {--t|table : Delete a migration} {--b|blade : Delete a view}';
+    protected $signature = 'delete:all {name : Module Name} {--c|controller : Delete a controller} {--m|model : Delete a model} {--r|request : Delete a request} {--M|migration : Delete a migration} {--b|blade : Delete a view}';
 
     /**
      * The console command description.
