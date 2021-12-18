@@ -101,7 +101,7 @@ If you discover any security related issues, please email support@teacoders.in i
 
 ## Credits
 
-- [Moolchand Sharma](https://github.com/technical-ms)
+- [Moolchand Sharma](https://github.com/TechyMS)
 
 ## License
 
