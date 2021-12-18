@@ -31,13 +31,13 @@ Run the command below to generate all the required files for the module(model, c
 php artisan make:all <module name> (Product or ServiceCategory)
 ```
 
-after that it will ask  "Do you want to add columns in migration ? (yes/no) [no]":
+* After that it will ask  "Do you want to add columns in migration ? (yes/no) [no]":
 
-if you enter yes/y then it will ask comma(,) seperated column names (name,avatar)
+* If you enter yes/y then it will ask comma(,) seperated column names (ex: name,avatar)
 
-if you hit enter then it will ask data types for these columns, press enter after selecting data types
+* If you hit enter then it will ask data types for these columns, press enter after selecting data types
 
-after that it will ask that "Do you want to create request class?" if you enter yes/y then it will create request class and validations for your migration columns, if you enter no/n then it will add validations in controller.
+* After that it will ask that "Do you want to create request class?" if you enter yes/y then it will create request class and validations for your migration columns, if you enter no/n then it will add validations in controller.
 
 Run the command below to generate view 
 
